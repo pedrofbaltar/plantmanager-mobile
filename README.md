@@ -16,6 +16,8 @@
 
 Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você sempre que precisar.
 
+Confira o layout da aplicação no Figma clicando [aqui](https://www.figma.com/file/IhQRtrOZdu3TrvkPYREzOy/PlantManager/duplicate).
+
 ---
 
 ### 💻 Instalação e Execução do Projeto
@@ -54,4 +56,4 @@ Esse projeto está sob a licença do MIT. Veja o arquivo do desafio [LICENSE](LI
 
 ---
 
-Feito com 💜 por <a href="https://www.linkedin.com/in/pedro-felipe-baltar-2a26a31ab/">Pedro Felipe Baltar</a>
+Feito por <a href="https://www.linkedin.com/in/pedro-felipe-baltar-2a26a31ab/">Pedro Felipe Baltar</a>
