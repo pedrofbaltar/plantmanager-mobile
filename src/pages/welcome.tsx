@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView, Text, Image, TouchableOpacity, StyleSheet, Platform, StatusBar } from 'react-native';
-import colors from '../../styles/colors';
+import colors from '../styles/colors';
 import { Button } from '../components/Button'
 
 import wateringImg from '../assets/watering.png';
