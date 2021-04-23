@@ -6,10 +6,6 @@
   Uma maneira fácil de gerenciar suas plantas.
 </h3>
 
-<p align="center">
-  🚧 Em desenvolvimento... 🚧
-</p>
-
 ---
 
 ## 🚀 Sobre a aplicação
