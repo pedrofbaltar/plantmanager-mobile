@@ -1,18 +1,70 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   View,
   Text,
   Image 
 } from 'react-native';
-import { Header } from '../components/Header'
+import { Header } from '../components/Header';
+import { FlatList } from 'react-native-gesture-handler';
+import { loadPlant, PlantProps } from '../libs/storage';
+import { formatDistance } from 'date-fns';
+import { pt } from 'date-fns/locale';
 
+import waterDrop from '../assets/waterdrop.png';
 import colors from '../styles/colors';
+import fonts from '../styles/fonts';
+import { PlantCardSecondary } from '../components/PlantCardSecondary';
 
 export function MyPlants() {
+  const [myPlants, setMyPlants] = useState<PlantProps[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [nextWatered, setNextWatered] = useState<string>();
+
+  useEffect(() => {
+    async function loadStorageData() {
+      const plantsStoraged = await loadPlant();
+      const nextTime = formatDistance(
+        new Date(plantsStoraged[0].dateTimeNotification).getTime(),
+        new Date().getTime(),
+        { locale: pt}
+      );
+
+      setNextWatered(`Não se esqueça de regar sua ${plantsStoraged[0].name} daqui ${nextTime}.`);
+
+      setMyPlants(plantsStoraged);
+      setLoading(false);
+    }
+
+    loadStorageData();
+  }, []);
+
   return (
     <View style={styles.container}>
       <Header />
+
+      <View style={styles.spotLight}>
+        <Image
+          source={waterDrop}
+          style={styles.spotLightImage}
+        />
+
+        <Text style={styles.spotLightText}>{nextWatered}</Text>
+      </View>
+
+      <View style={styles.plants}>
+        <Text style={styles.plantsTitle}>Próximas readas</Text>
+
+        <FlatList
+          data={myPlants}
+          keyExtractor={(item) => String(item.id)}
+          renderItem={({ item }) => (
+            <PlantCardSecondary data={item} />
+          )}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{flex: 1}}
+        />
+      </View>
     </View>
   )
 }
@@ -25,5 +77,35 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     paddingTop: 50,
     backgroundColor: colors.background
+  },
+  spotLight: {
+    backgroundColor: colors.blue_light,
+    paddingHorizontal: 32,
+    marginTop: 32,
+    height: 100,
+    borderRadius: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  spotLightImage: {
+    width: 60,
+    height: 60
+  },
+  spotLightText: {
+    flex: 1,
+    color: colors.blue,
+    paddingHorizontal: 20,
+    textAlign: 'justify'
+  },
+  plants: {
+    flex: 1,
+    width: '100%'
+  },
+  plantsTitle: {
+    fontSize: 24,
+    fontFamily: fonts.heading,
+    color: colors.heading,
+    marginVertical: 20
   }
 })

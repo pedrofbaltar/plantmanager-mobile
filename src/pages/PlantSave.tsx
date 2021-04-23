@@ -5,7 +5,6 @@ import {
   Text,
   View,
   Image,
-  ScrollView,
   Platform,
   TouchableOpacity
 } from 'react-native';
@@ -15,7 +14,7 @@ import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { useNavigation, useRoute } from '@react-navigation/core';
 import { format, isBefore } from 'date-fns';
 import DateTimePicker, { Event } from '@react-native-community/datetimepicker';
-import { loadPlant, PlantProps, savePlant } from '../libs/storage';
+import { PlantProps, savePlant } from '../libs/storage';
 
 import waterDrop from '../assets/waterdrop.png';
 import colors from '../styles/colors';
