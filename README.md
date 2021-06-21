@@ -23,13 +23,13 @@ Se você não tem ideia de como instalar e executar um projeto React Native e ro
 - Clone este repositório
 
 ```
-$ git clone https://github.com/pedrofbaltar/plantmanager-project
+$ git clone https://github.com/pedrofbaltar/plantmanager-mobile
 ```
 
 - Navegue até o diretório principal do projeto
 
 ```
-$ cd plantmanager-project
+$ cd plantmanager-mobile
 ```
 
 - Instale as dependências com o Yarn
